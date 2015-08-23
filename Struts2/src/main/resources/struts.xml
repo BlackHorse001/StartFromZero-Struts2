@@ -2,35 +2,62 @@
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
-    
-    <struts>
-    <!-- 
-    	constant 定义系统常量，常用的有：
-    	struts.devMode: 开发模式，提供更多的log信息
-    
-     -->
-    	<constant name="struts.devMode" value="true" />
-    	
-    	<!-- hello world 初识Struts2 -->
-    	<!-- 
-    		结点介绍:
-    			package: 物理上区分不同的action, result, interceptor等（类似于Java中的包）。并且便于继承和重写，类似于Java中的对象
-    				name: required
-    				extends: 共用其他package定义的元素，一般从struts-default（定义了默认的拦截器堆栈，bean等信息）继承
-    				namespace: 逻辑上区分不同的action
-    				abstract: 抽象，用于继承
-    	 -->
-    	<package name="helloworld" extends="struts-default" namespace="/hello">
-    		<action name="HelloWorld1">
-    			<result name="success">../1_helloworld/hello.jsp</result>
-    		</action>
-    		<action name="HelloWorld2" class="com.study.Struts2.action.helloword.HelloWorld">
-    			<result name="success">../1_helloworld/hello.jsp</result>
-    		</action>
-    	</package>
-    	
-    	
-    	
-    	
-    	
-    </struts>
+
+<struts>
+	<!-- constant 定义系统常量，常用的有： struts.devMode: 开发模式，提供更多的log信息 struts.configuration.xml.reload: 
+		当struts.xml文件改变后，动态加载 -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+
+	<!-- hello world 初识Struts2 -->
+	<!-- package结点介绍: 
+		package: 物理上区分不同的action, result, interceptor等（类似于Java中的包）。并且便于继承和重写，类似于Java中的对象 
+		name: required extends: 共用其他package定义的元素，一般从struts-default（定义了默认的拦截器堆栈，bean等信息）继承 
+		namespace: 逻辑上区分不同的action abstract: 抽象，用于继承 
+	-->
+	<!-- hello world start -->
+	<package name="helloworld" extends="struts-default" namespace="/hello">
+		<action name="HelloWorld1">
+			<result name="success">../1_helloworld/hello.jsp</result>
+		</action>
+		<action name="HelloWorld2" class="com.study.Struts2.helloword.HelloWorld">
+			<result name="success">../1_helloworld/hello.jsp</result>
+		</action>
+	</package>
+	
+	<!-- action start -->
+	<!-- 
+		action节点介绍：
+		name: required 对应浏览器请求路径（除去主机信息和项目名称）。如果name中含有斜杠，需要开启系统常量：<constant name="struts.enable.SlashesInActionNames" value="true"/>
+		class: 请求处理类
+		method: 请求处理方法，默认execute
+		action用来在请求处理类和请求之间建立映射关系。在action中可以配置多个result，多个exception和一个拦截器堆栈
+	 -->
+	<package name="action" extends="struts-default" namespace="/action">
+		<!-- 默认action配置，无需配置class，Struts将ActionSupport作为默认action类
+			 等同于 <action name="default" class="com.opensymphony.xwork2.ActionSupport">
+		-->
+		<action name="default">
+			<result name="success">../2_action/index.jsp</result>
+		</action>
+		<!-- 普通action类，一个普通java类，拥有成员方法String execute()即可。Struts通过反射执行execute方法-->
+		<action name="normal" class="com.study.Struts2.action.NormalAction">
+			<result name="success">../2_action/index.jsp</result>
+		</action>
+		<!-- 一般Struts Action class 都是通过集成ActionSupport来实现 -->
+		<action name="basic" class="com.study.Struts2.action.BasicAction">
+			<result name="success">../2_action/index.jsp</result>
+		</action>
+	</package>
+	<!-- action end -->
+	
+	<!-- action method start -->
+	<package name="method" extends="struts-default" namespace="/method">
+		<action name="default" class=""></action>
+	</package>
+	<!-- action method end -->
+	
+
+
+
+</struts>
