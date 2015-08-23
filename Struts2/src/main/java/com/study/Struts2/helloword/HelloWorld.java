@@ -1,4 +1,4 @@
-package com.study.Struts2.action.helloword;
+package com.study.Struts2.helloword;
 
 public class HelloWorld {
 	
