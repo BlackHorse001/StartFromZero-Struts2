@@ -4,11 +4,15 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<!-- constant 定义系统常量，常用的有： struts.devMode: 开发模式，提供更多的log信息 struts.configuration.xml.reload: 
-		当struts.xml文件改变后，动态加载 -->
+	<!-- constant 配置 start -->
+	<!-- 开发模式，提供更多的log信息 --> 
 	<constant name="struts.devMode" value="true" />
+	<!-- 当struts.xml文件改变后，动态加载  -->
 	<constant name="struts.configuration.xml.reload" value="true" />
-
+	<!-- 开启动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<!-- constant 配置 end -->
+	
 	<!-- hello world 初识Struts2 -->
 	<!-- package节点介绍: 
 		package: 物理上区分不同的action, result, interceptor等（类似于Java中的包）。并且便于继承和重写，类似于Java中的对象 
@@ -18,10 +22,10 @@
 	<!-- hello world start -->
 	<package name="helloworld" extends="struts-default" namespace="/hello">
 		<action name="HelloWorld1">
-			<result name="success">../1_helloworld/hello.jsp</result>
+			<result name="success">1_helloworld/hello.jsp</result>
 		</action>
 		<action name="HelloWorld2" class="com.study.Struts2.helloword.HelloWorld">
-			<result name="success">../1_helloworld/hello.jsp</result>
+			<result name="success">1_helloworld/hello.jsp</result>
 		</action>
 	</package>
 	
@@ -46,16 +50,66 @@
 		
 		<!-- 默认action配置，无需配置class，Struts将default-class-ref指定的class最为默认action处理类-->
 		<action name="default">
-			<result name="success">../2_action/index.jsp</result>
+			<result name="success">2_action/index.jsp</result>
 		</action>
 		<!-- 普通action类，一个普通java类，拥有成员方法String execute()即可。Struts通过反射执行execute方法-->
 		<action name="normal" class="com.study.Struts2.action.NormalAction">
-			<result name="success">../2_action/index.jsp</result>
+			<result name="success">2_action/index.jsp</result>
 		</action>
 		<!-- 一般Struts Action class 都是通过集成ActionSupport来实现 -->
 		<action name="basic" class="com.study.Struts2.action.BasicAction">
-			<result name="success">../2_action/default.jsp</result>
+			<result name="success">2_action/default.jsp</result>
 		</action>
 	</package>
 	<!-- action end -->
+	
+	<!-- action method start -->
+	<package name="method" extends="struts-default" namespace="/method">
+		<default-action-ref name="index"/>
+		<!-- method 方法调用 start -->
+		<action name="index" class="com.study.Struts2.action.method.MethodAction">
+			<result name="success">/3_method/index.jsp</result>
+		</action>
+		<action name="query" class="com.study.Struts2.action.method.MethodAction" method="query">
+			<result>/3_method/method_query.jsp</result>
+		</action>
+		<action name="update" class="com.study.Struts2.action.method.MethodAction" method="update">
+			<result>/3_method/method_update.jsp</result>
+		</action>
+		<action name="delete" class="com.study.Struts2.action.method.MethodAction" method="delete">
+			<result>/3_method/method_delete.jsp</result>
+		</action>
+		<action name="add" class="com.study.Struts2.action.method.MethodAction" method="add">
+			<result>/3_method/method_add.jsp</result>
+		</action>
+		<!-- method 方法调用 end -->
+		<!-- 通配符调用 start -->
+		<action name="_*" class="com.study.Struts2.action.method.MethodAction" method="{1}">
+			<result>/3_method/method_{1}.jsp</result>
+		</action>
+		<!-- 通配符调用 end -->
+		<!-- 动态方法调用 start-->
+		<!-- 
+			使用action名称（指前端请求的action名称）中“!”后的字符串表示要调用的方法名。 
+			struts.xml action配置可采用以上任一种形式，需要改变的是前端页面请求的action名称。
+			只需要开启struts.enable.DynamicMethodInvocation变量。
+			动态方法调用并不推荐使用，主要有两个原因：
+				1 如果使用POJO作为action会引起安全性问题
+				2 与通配符重叠
+			在Struts2.3x中 在package元素中新增属性strict-method-invocation来限制动态方法调用，并且每个action所允许的动态调用的方法名称
+			需在<allowed-methods>xxx</allowed-methods>中说明，用逗号分隔
+		-->
+		<!-- 动态方法调用 end-->
+		<!-- param子元素为action传递参数 -->
+		<!-- 
+			通过${paramName}的形式在action中指定动态的结果
+			paramName为action class的属性，并且带有getter-setter方法
+		 -->
+		<action name="param" class="com.study.Struts2.action.ParamAction">
+			<result name="success">${type}</result>
+			<!-- /3_method/method_add.jsp only for test -->
+			<param name="type">/3_method/method_add.jsp</param>
+		</action>
+	</package>
+	<!-- action method end -->
 </struts>
