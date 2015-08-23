@@ -10,7 +10,7 @@
 	<constant name="struts.configuration.xml.reload" value="true" />
 
 	<!-- hello world 初识Struts2 -->
-	<!-- package结点介绍: 
+	<!-- package节点介绍: 
 		package: 物理上区分不同的action, result, interceptor等（类似于Java中的包）。并且便于继承和重写，类似于Java中的对象 
 		name: required extends: 共用其他package定义的元素，一般从struts-default（定义了默认的拦截器堆栈，bean等信息）继承 
 		namespace: 逻辑上区分不同的action abstract: 抽象，用于继承 
@@ -34,9 +34,17 @@
 		action用来在请求处理类和请求之间建立映射关系。在action中可以配置多个result，多个exception和一个拦截器堆栈
 	 -->
 	<package name="action" extends="struts-default" namespace="/action">
-		<!-- 默认action配置，无需配置class，Struts将ActionSupport作为默认action类
+		<!-- 如果在当前namespace下没有与请求匹配的action对应，将会调用default action 配置-->
+		<!-- **必须放在package节点最上面，否则报各种奇葩错误 -->
+		<default-action-ref name="basic"/>
+		<!-- 
+			如果没有为某个Action指定具体的class值时，系统将自动引用<default-class-ref>标签中所指定的类 
+			Struts将ActionSupport作为默认action类
 			 等同于 <action name="default" class="com.opensymphony.xwork2.ActionSupport">
 		-->
+		<default-class-ref class="com.study.Struts2.action.BasicAction"/>
+		
+		<!-- 默认action配置，无需配置class，Struts将default-class-ref指定的class最为默认action处理类-->
 		<action name="default">
 			<result name="success">../2_action/index.jsp</result>
 		</action>
@@ -46,18 +54,8 @@
 		</action>
 		<!-- 一般Struts Action class 都是通过集成ActionSupport来实现 -->
 		<action name="basic" class="com.study.Struts2.action.BasicAction">
-			<result name="success">../2_action/index.jsp</result>
+			<result name="success">../2_action/default.jsp</result>
 		</action>
 	</package>
 	<!-- action end -->
-	
-	<!-- action method start -->
-	<package name="method" extends="struts-default" namespace="/method">
-		<action name="default" class=""></action>
-	</package>
-	<!-- action method end -->
-	
-
-
-
 </struts>
