@@ -20,26 +20,26 @@ table, tr, td {
 <body>
 	<table>
 		<caption>method方法调用</caption>
-		<tr><td><a target="_blank" href="method/add" >add</a></tr></td>
-		<tr><td><a target="_blank" href="method/delete" >delete</a></tr></td>
-		<tr><td><a target="_blank" href="method/update" >update</a></tr></td>
-		<tr><td><a target="_blank" href="method/query" >query</a></tr></td>
+		<tr><td><a target="_blank" href="method/add" >add</a></td></tr>
+		<tr><td><a target="_blank" href="method/delete" >delete</a></td></tr>
+		<tr><td><a target="_blank" href="method/update" >update</a></td></tr>
+		<tr><td><a target="_blank" href="method/query" >query</a></td></tr>
 	</table>
 	<hr />
 	<table>
 		<caption>通配符方法调用</caption>
-		<tr><td><a target="_blank" href="method/_add" >add</a></tr></td>
-		<tr><td><a target="_blank" href="method/_delete" >delete</a></tr></td>
-		<tr><td><a target="_blank" href="method/_update" >update</a></tr></td>
-		<tr><td><a target="_blank" href="method/_query" >query</a></tr></td>
+		<tr><td><a target="_blank" href="method/_add" >add</a></td></tr>
+		<tr><td><a target="_blank" href="method/_delete" >delete</a></td></tr>
+		<tr><td><a target="_blank" href="method/_update" >update</a></td></tr>
+		<tr><td><a target="_blank" href="method/_query" >query</a></td></tr>
 	</table>
 	<hr />
 	<table>
 		<caption>动态方法调用</caption>
-		<tr><td><a target="_blank" href="method!add" >add</a></tr></td>
-		<tr><td><a target="_blank" href="method!delete" >delete</a></tr></td>
-		<tr><td><a target="_blank" href="method!update" >update</a></tr></td>
-		<tr><td><a target="_blank" href="method!query" >query</a></tr></td>
+		<tr><td><a target="_blank" href="method!add" >add</a></td></tr>
+		<tr><td><a target="_blank" href="method!delete" >delete</a></td></tr>
+		<tr><td><a target="_blank" href="method!update" >update</a></td></tr>
+		<tr><td><a target="_blank" href="method!query" >query</a></td></tr>
 	</table>
 </body>
 </html>
