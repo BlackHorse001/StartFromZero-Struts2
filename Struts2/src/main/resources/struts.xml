@@ -112,4 +112,25 @@
 		</action>
 	</package>
 	<!-- action method end -->
+	<!-- action access servlet api start -->
+	<package name="servletapi" extends="struts-default" namespace="/servletapi">
+		<action name="index">
+			<result>/4_servletapi/index.jsp</result>
+		</action>
+		<!-- 通过ActionContext访问Servlet API -->
+		<action name="actioncontext" class="com.study.Struts2.action.servlet.ByActionContext">
+			<result>/4_servletapi/result.jsp</result>
+		</action>
+		<!-- 通过ServletActionContext访问Servlet API -->
+		<!-- 不推荐使用 -->
+		<action name="servletactioncontext" class="com.study.Struts2.action.servlet.ByServletActionContext">
+			<result>/4_servletapi/result.jsp</result>
+		</action>
+		<!-- 通过实现RequestAware，SessionAware，ApplicationAware接口，依赖Struts注入方式访问Servlet API -->
+		<!-- 最常用 -->
+		<action name="ioc" class="com.study.Struts2.action.servlet.ByIOC">
+			<result>/4_servletapi/result.jsp</result>
+		</action>
+	</package>
+	<!-- action access servlet api end -->
 </struts>
