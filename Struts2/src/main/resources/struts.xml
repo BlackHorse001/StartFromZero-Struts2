@@ -28,6 +28,7 @@
 			<result name="success">1_helloworld/hello.jsp</result>
 		</action>
 	</package>
+	<!-- hello world end -->
 	
 	<!-- action start -->
 	<!-- 
@@ -133,4 +134,5 @@
 		</action>
 	</package>
 	<!-- action access servlet api end -->
+	
 </struts>
