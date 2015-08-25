@@ -135,4 +135,54 @@
 	</package>
 	<!-- action access servlet api end -->
 	
+	<!-- action result start -->
+	<package name="result" extends="struts-default" namespace="/result">
+		<!--
+			在Struts中，所有充当Action类必须包含1或多个返回值为String的公有无参方法，其返回值就是用来选择返回结果。
+			在ActionSupport中默认定义了5中类型的result：
+				String SUCCESS = "success";
+				String NONE = "none";
+				String ERROR = "error";
+				String INPUT = "input";
+				String LOGIN = "login";
+			当然，你也可以自定义result。
+			节点介绍：
+				result：
+					name: 对应Action 方法的返回值
+					type: 由result-type 指定
+					param: 其他参数
+			
+			在package下面可以定义result-type。
+				result-type:
+					name: type名称
+					class: 对应的全限定类名
+					default: 是否为默认类型
+			在struts-default package中定义了11中result type，所以一般情况下是不需要我们手动指定的。
+			<result-types>
+	            <result-type name="chain" class="com.opensymphony.xwork2.ActionChainResult"/>
+	            <result-type name="dispatcher" class="org.apache.struts2.dispatcher.ServletDispatcherResult" default="true"/>
+	            <result-type name="freemarker" class="org.apache.struts2.views.freemarker.FreemarkerResult"/>
+	            <result-type name="httpheader" class="org.apache.struts2.dispatcher.HttpHeaderResult"/>
+	            <result-type name="redirect" class="org.apache.struts2.dispatcher.ServletRedirectResult"/>
+	            <result-type name="redirectAction" class="org.apache.struts2.dispatcher.ServletActionRedirectResult"/>
+	            <result-type name="stream" class="org.apache.struts2.dispatcher.StreamResult"/>
+	            <result-type name="velocity" class="org.apache.struts2.dispatcher.VelocityResult"/>
+	            <result-type name="xslt" class="org.apache.struts2.views.xslt.XSLTResult"/>
+	            <result-type name="plainText" class="org.apache.struts2.dispatcher.PlainTextResult" />
+	            <result-type name="postback" class="org.apache.struts2.dispatcher.PostbackResult" />
+        	</result-types>
+			
+			type功能：
+				dispatcher: 默认类型，
+				chain:
+				freemarker:
+				redirect:
+				redirectAction:
+				freemarker: 
+		 -->
+		<action name="index">
+			<result>/5_result/index.jsp</result>
+		</action>
+	</package>	
+	<!-- action result end -->
 </struts>
