@@ -137,9 +137,6 @@
 	
 	<!-- action result start -->
 	<package name="result" extends="struts-default" namespace="/result">
-		<global-results>
-			<result></result>
-		</global-results>
 		<!--
 			在Struts中，所有充当Action类必须包含1或多个返回值为String的公有无参方法，其返回值就是用来选择返回结果。
 			在ActionSupport中默认定义了5中类型的result：
@@ -197,9 +194,36 @@
 					anchor:同上
 					suppressEmptyParameters: 默认false，是否去除url中值为空的参数
 		 -->
-		<action name="index">
-			<result>/5_result/index.jsp</result>
-		</action>
+		 <!-- <global-results>
+			<result name="input">/5_result/index.jsp</result>
+		 </global-results> -->
+		 <action name="index">
+		 	<result>/5_result/index.jsp</result>
+		 </action>
+		 <action name="dispatcher" class="com.study.Struts2.action.result.ResultAction" method="dispatcher">
+		 	<!-- use global result -->
+		 </action>
+		 <action name="chain" class="com.study.Struts2.action.result.ResultAction" method="chain">
+		 	<result type="chain">
+		 		<param name="actionName">ioc</param>
+		 		<param name="namespace">/servletapi</param>
+		 	</result>
+		 </action>
+		 <action name="redirect" class="com.study.Struts2.action.result.ResultAction" method="redirect">
+		 	<result type="redirect">
+		 		<param name="location">/5_result/index.jsp</param>
+		 		<!--  
+		 			redirect到action也是可以的
+		 			<param name="location">/servletapi/ioc</param>
+		 		-->
+		 	</result>
+		 </action>
+		 <action name="redirectaction" class="com.study.Struts2.action.result.ResultAction" method="redirectaction">
+		 	<result type="redirectAction">
+		 		<param name="actionName">ioc</param>
+		 		<param name="namespace">/servletapi</param>
+		 	</result>
+		 </action>
 	</package>	
 	<!-- action result end -->
 </struts>
