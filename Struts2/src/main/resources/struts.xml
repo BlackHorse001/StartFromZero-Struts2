@@ -137,6 +137,9 @@
 	
 	<!-- action result start -->
 	<package name="result" extends="struts-default" namespace="/result">
+		<global-results>
+			<result></result>
+		</global-results>
 		<!--
 			在Struts中，所有充当Action类必须包含1或多个返回值为String的公有无参方法，其返回值就是用来选择返回结果。
 			在ActionSupport中默认定义了5中类型的result：
@@ -171,7 +174,8 @@
 	            <result-type name="plainText" class="org.apache.struts2.dispatcher.PlainTextResult" />
 	            <result-type name="postback" class="org.apache.struts2.dispatcher.PostbackResult" />
         	</result-types>
-			
+			全局result:
+				<global-results>位于包级别下，对包下面的所有action都有效
 			常用type功能：
 				dispatcher: 默认类型，用来转向（forward）页面，通常处理 JSP
 					location: 资源URL
