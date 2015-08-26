@@ -172,17 +172,26 @@
 	            <result-type name="postback" class="org.apache.struts2.dispatcher.PostbackResult" />
         	</result-types>
 			
-			type功能：
-				dispatcher: 默认类型，
-				chain: 将请求转发至其他action，共享ActionContext，并且以当前action的interceptor和result作结
+			常用type功能：
+				dispatcher: 默认类型，用来转向（forward）页面，通常处理 JSP
+					location: 资源URL
+					parse: 决定location是否可以通过OGNL来引用参数，默认true
+				chain（不推荐使用，推荐redirect after post）: 将请求转发至其他action，共享ActionContext，并且以当前action的interceptor和result作结
 					actionName: 转向的action名称
 					namespace: 转向的action所在的命名空间，默认为当前命名空间下
 					method: 转向的action将要执行的方法，默认execute
-					skipActions: 
-				freemarker:
-				redirect:
-				redirectAction:
-				freemarker: 
+					skipActions: 允许转向的action列表，以逗号分隔
+				redirect: 重定向(redirect)到别的URL
+					location: 资源URL
+					parse: 同dispatcher
+					anchor: 跳转到指定锚点处
+					自定义param: 追加url参数
+				redirectAction: 重定向到别的action
+					actionName:
+					namespace:
+					parse:
+					anchor:同上
+					suppressEmptyParameters: 默认false，是否去除url中值为空的参数
 		 -->
 		<action name="index">
 			<result>/5_result/index.jsp</result>
