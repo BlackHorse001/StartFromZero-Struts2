@@ -226,4 +226,23 @@
 		 </action>
 	</package>	
 	<!-- action result end -->
+	<!-- interceptor start -->
+	<package name="interceptor" extends="struts-default" namespace="/interceptor">
+		<!-- 拦截器可以在Action执行execute之前和之后做一些其他操作。Struts2的许多功能都是由拦截器来完成，
+			比如文件上传，类型转换，防止重复提交等
+			拦截器定义在package下面
+			interceptor:
+				name: 包级别唯一名称 
+				class: 对应的class 需实现 com.opensymphony.xwork2.interceptor.Interceptor接口
+				在interceptor还可以定义interceptor-stack
+					interceptor-stack:
+						 name: 包级别唯一名称
+						 在interceptor-stack通过<interceptor-ref name="xxx"/>来引用相关的interceptor或interceptor-stack
+			在action中通过<interceptor-ref name="xxx"/>来引用，顺序不同，功能也不同。可以使用param元素，重写引用栈中的interceptor
+			在struts-default.xml中默认引用了defaultStack：<default-interceptor-ref name="defaultStack"/>，所以继承自struts-default的package
+			也将继承其拦截器引用
+			详见struts-default.xml
+		 -->
+	</package>
+	<!-- interceptor end -->
 </struts>
