@@ -245,4 +245,14 @@
 		 -->
 	</package>
 	<!-- interceptor end -->
+	<!-- ognl start -->
+	<!-- 
+		OGNL(Object Graph Navigation Language)，是一种功能强大的表达式语言，它提供了访问值栈中对象的统一方法。OGNL处理的是一个Map对象。
+		Struts将OGNL context作为ActionContext，将值栈作为ROOT对象，并且将其他对象如：request，session，application，parameters等也存放在ActionContext中。
+		在引用ROOT对象时，不需要使用任何标记，而引用其他对象则需要使用‘#’。
+		Action的实例总是被放在值栈中作为ROOT元素，所以访问Action中的属性时，可以直接引用而不需要‘#’，引用request等其他对象需要使用‘#’
+	 -->
+	<package name="ognl" extends="struts-default" namespace="/ognl">
+	</package>
+	<!-- ognl end -->
 </struts>
