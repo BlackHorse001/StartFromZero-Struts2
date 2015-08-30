@@ -255,4 +255,11 @@
 	<package name="ognl" extends="struts-default" namespace="/ognl">
 	</package>
 	<!-- ognl end -->
+	<!-- tags start -->
+	<package name="tag" namespace="/tag" extends="struts-default">
+		<action name="index" class="com.study.Struts2.tag.TagsAction">
+			<result>/7_tag/index.jsp</result>
+		</action>
+	</package>
+	<!-- tags end -->
 </struts>
