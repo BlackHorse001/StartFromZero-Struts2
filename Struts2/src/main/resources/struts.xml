@@ -262,4 +262,11 @@
 		</action>
 	</package>
 	<!-- tags end -->
+	<!-- validation start -->
+	<package name="validation" namespace="/validation" extends="struts-default">
+		<action name="index" class="">
+			<result>/8_validation/index.jsp</result>
+		</action>
+	</package>
+	<!-- validation end -->
 </struts>
