@@ -22,10 +22,10 @@
 	<!-- hello world start -->
 	<package name="helloworld" extends="struts-default" namespace="/hello">
 		<action name="HelloWorld1">
-			<result name="success">1_helloworld/hello.jsp</result>
+			<result name="success">/1_helloworld/hello.jsp</result>
 		</action>
 		<action name="HelloWorld2" class="com.study.Struts2.helloword.HelloWorld">
-			<result name="success">1_helloworld/hello.jsp</result>
+			<result name="success">/1_helloworld/hello.jsp</result>
 		</action>
 	</package>
 	<!-- hello world end -->
@@ -51,15 +51,15 @@
 		
 		<!-- 默认action配置，无需配置class，Struts将default-class-ref指定的class最为默认action处理类-->
 		<action name="default">
-			<result name="success">2_action/index.jsp</result>
+			<result name="success">/2_action/index.jsp</result>
 		</action>
 		<!-- 普通action类，一个普通java类，拥有成员方法String execute()即可。Struts通过反射执行execute方法-->
 		<action name="normal" class="com.study.Struts2.action.NormalAction">
-			<result name="success">2_action/index.jsp</result>
+			<result name="success">/2_action/index.jsp</result>
 		</action>
 		<!-- 一般Struts Action class 都是通过集成ActionSupport来实现 -->
 		<action name="basic" class="com.study.Struts2.action.BasicAction">
-			<result name="success">2_action/default.jsp</result>
+			<result name="success">/2_action/default.jsp</result>
 		</action>
 	</package>
 	<!-- action end -->
