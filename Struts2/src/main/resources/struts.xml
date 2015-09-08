@@ -264,8 +264,28 @@
 	<!-- tags end -->
 	<!-- validation start -->
 	<package name="validation" namespace="/validation" extends="struts-default">
-		<action name="index" class="">
+		<!-- 
+			Struts validation依赖于validation和workflow两个拦截器
+			validation拦截器用来完成数据校验工作，并将验证不通过的栏位及错误信息存放在一个列表当中
+			workflow拦截器用来检查错误列表是否存在，如果存在，返回“input”
+			
+			Struts2通过xml或注解的方式实现可配置的数据校验，xml配置文件与action class所放目录一直，分为
+			<ActionClassName>-validation.xml 和 <ActionClassName>-<ActionAliasName>-validation.xml.
+			<ActionClassName>-validation.xml：
+				在调用action类中的所有方法时都会起作用
+			<ActionClassName>-<ActionAliasName>-validation.xml：
+				ActionAliasName：在struts.xml中定义的action名称。仅在actionAlias和action的name属性值相同时才起作用
+				
+		 -->
+		<default-action-ref name="index"></default-action-ref>
+		<action name="index">
 			<result>/8_validation/index.jsp</result>
+		</action>
+		<action name="base" class="com.study.Struts2.validation.BaseValidationAction">
+			<result>/8_validation/base.jsp</result>
+			<!-- 没有配置input result时，验证失败并没有跳转到error????? -->
+			<result name="error">/8_validation/error.jsp</result>
+			<result name="input">/8_validation/base.jsp</result>
 		</action>
 	</package>
 	<!-- validation end -->

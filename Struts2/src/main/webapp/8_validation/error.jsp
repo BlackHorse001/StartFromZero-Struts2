@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Struts Validation</title>
+<title>Error</title>
 </head>
 <body>
-	<h2>Struts Validation</h2>
-	<a href="base">base validation</a>
+	<h2>Error occurs</h2>
 </body>
 </html>
