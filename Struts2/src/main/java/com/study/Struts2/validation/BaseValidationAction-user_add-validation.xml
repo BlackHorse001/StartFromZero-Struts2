@@ -6,11 +6,4 @@
  			<message>name should be empty</message>
  		</field-validator>
  	</field>
- 	<field name="age">
- 		<field-validator type="int">
- 			<param name="min">10</param>
- 			<param name="max">70</param>
- 			<message>age should be between 10 and 70</message>
- 		</field-validator>
- 	</field>
  </validators>

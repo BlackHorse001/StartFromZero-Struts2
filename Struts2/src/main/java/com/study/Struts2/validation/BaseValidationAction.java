@@ -24,4 +24,12 @@ public class BaseValidationAction extends ActionSupport {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String add(){
+		return SUCCESS;
+	}
+	
+	public String update(){
+		return SUCCESS;
+	}
 }

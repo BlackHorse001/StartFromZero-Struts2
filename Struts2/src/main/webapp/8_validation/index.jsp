@@ -8,6 +8,10 @@
 </head>
 <body>
 	<h2>Struts Validation</h2>
-	<a href="base">base validation</a>
+	<ul>
+		<li><a href="goto-base">1 base validation</a></li>
+		<li><a href="goto-allOrByAliasValidation">2 all action method validation/action alias validation</a></li>
+		
+	</ul>
 </body>
 </html>
