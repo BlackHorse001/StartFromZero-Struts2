@@ -3,7 +3,7 @@
  <validators>
  	<field name="name">
  		<field-validator type="requiredstring">
- 			<message>name should be empty</message>
+ 			<message>name should not be empty</message>
  		</field-validator>
  	</field>
  </validators>
