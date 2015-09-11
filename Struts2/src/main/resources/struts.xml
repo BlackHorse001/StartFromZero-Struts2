@@ -297,6 +297,14 @@
 		<action name="user_*" class="com.study.Struts2.validation.BaseValidationAction">
 			<result name="input">/8_validation/allOrByAliasValidation.jsp</result>
 		</action>
+		<!-- 
+			validation.xml中又分为两种不同的验证方式，field验证和validator验证
+			field验证：先指定field，可配置多种验证规则
+			validator验证：先指定规则，在指定field
+		 -->
+		 <action name="validator" class="com.study.Struts2.validation.ValidatorAction">
+		 	<result name="input">/8_validation/fieldAndValidatorVallidation.jsp</result>
+		 </action>
 	</package>
 	<!-- validation end -->
 </struts>

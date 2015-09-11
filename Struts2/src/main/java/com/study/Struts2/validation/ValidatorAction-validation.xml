@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+ <validators>
+ 	<!-- short-circuit 用于当某个验证器验证失败后，其后是否继续执行-->
+ 	<field name="name">
+ 		<field-validator type="stringlength" short-circuit="true">
+ 			<param name="minLength">4</param>
+			<param name="maxLength">8</param>
+			<param name="trim">true</param>
+			<message>name length should between ${minLength} and ${maxLength}</message>
+ 		</field-validator>
+ 		<!-- 为了测试short-circuit -->
+ 		<field-validator type="stringlength">
+ 			<param name="minLength">4</param>
+			<param name="maxLength">6</param>
+			<param name="trim">true</param>
+			<message>name length should between ${minLength} and ${maxLength}</message>
+ 		</field-validator>
+ 		<!-- requiredstring优先验证，不论其位置 -->
+ 		<field-validator type="requiredstring">
+ 			<message>name should not be empty</message>
+ 		</field-validator>
+ 	</field>
+ 	<field name="age">
+ 		<field-validator type="int">
+ 			<param name="min">10</param>
+ 			<param name="max">70</param>
+ 			<message>age should be between 10 and 70</message>
+ 		</field-validator>
+ 	</field>
+ 	<validator type="requiredstring" short-circuit="true">
+ 		<param name="fieldName">location</param>
+ 		<message>location should not be empty</message>
+ 	</validator>
+ 	<validator type="stringlength">
+ 		<param name="fieldName">location</param>
+ 		<param name="minLength">4</param>
+ 		<param name="maxLength">8</param>
+		<param name="trim">true</param>
+		<message>location length should between ${minLength} and ${maxLength}</message>
+ 	</validator>
+ </validators>
