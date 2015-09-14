@@ -307,4 +307,28 @@
 		 </action>
 	</package>
 	<!-- validation end -->
+	<!-- i18n start -->
+	<constant name="struts.custom.i18n.resources" value="i18n"/>
+	<package name="i18n" namespace="/i18n" extends="struts-default">
+		<!-- 
+			Struts2支持通过配置资源文件（properties文件）来实现对国际化的支持
+			资源文件名称要遵循一定的规范：
+				1 name.properties
+				2 name_language.properties
+				3 name_language_country.properties
+			name为自定义名称
+			language为语言代码，由ISO-639定义
+			country为国家或地区代码，由ISO-3166定义
+			
+			通过struts.custom.i18n.resources常量 根据name指定资源文件
+		 -->
+		<default-action-ref name="index" />
+		<action name="index">
+			<result>/9_i18n/index.jsp</result>
+		</action>
+		<action name="goto-*">
+			<result>/9_i18n/{1}.jsp</result>
+		</action>
+	</package>
+	<!-- i18n end -->
 </struts>
