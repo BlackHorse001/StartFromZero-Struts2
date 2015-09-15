@@ -331,4 +331,12 @@
 		</action>
 	</package>
 	<!-- i18n end -->
+	<!-- type conversion start -->
+	<package name="conver" namespace="/conver" extends="struts-default">
+		<default-action-ref name="index"/>
+		<action name="index">
+			<result>/10_typeconversion/index.jsp</result>
+		</action>
+	</package>
+	<!-- type conversion end -->
 </struts>
