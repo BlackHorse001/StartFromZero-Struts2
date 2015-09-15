@@ -333,9 +333,29 @@
 	<!-- i18n end -->
 	<!-- type conversion start -->
 	<package name="conver" namespace="/conver" extends="struts-default">
+		<!-- 
+			
+		 -->
 		<default-action-ref name="index"/>
 		<action name="index">
 			<result>/10_typeconversion/index.jsp</result>
+		</action>
+		<action name="goto-*">
+			<result>/10_typeconversion/{1}.jsp</result>
+		</action>
+		<!-- 
+			如果在Action类中不使用泛型定义集合属性，为了实现类型自动转换，需要配置properties文件，如果使用泛型，则不用配置
+			配置文件的名称为ActionName-conversion.properties
+			List：
+				内容为键值对形式：Element_xxx=类型的完整类名
+				Element_是固定格式，xxx是Action或对象中集合的名称
+		 	Map:
+		 		内容为键值对形式：Key_xxx=类型的完整类名
+		 						 Element_xxx=类型的完整类名
+		 		Key_和Element_为固定格式
+		 -->
+		<action name="stu_*" class="com.study.Struts2.typeconver.StuAction" method="{1}">
+			<result>/10_typeconversion/{1}.jsp</result>
 		</action>
 	</package>
 	<!-- type conversion end -->
