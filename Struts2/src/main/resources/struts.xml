@@ -22,10 +22,10 @@
 	<!-- hello world start -->
 	<package name="helloworld" extends="struts-default" namespace="/hello">
 		<action name="HelloWorld1">
-			<result name="success">/1_helloworld/hello.jsp</result>
+			<result name="success">/01_helloworld/hello.jsp</result>
 		</action>
 		<action name="HelloWorld2" class="com.study.Struts2.helloword.HelloWorld">
-			<result name="success">/1_helloworld/hello.jsp</result>
+			<result name="success">/01_helloworld/hello.jsp</result>
 		</action>
 	</package>
 	<!-- hello world end -->
@@ -51,15 +51,15 @@
 		
 		<!-- 默认action配置，无需配置class，Struts将default-class-ref指定的class最为默认action处理类-->
 		<action name="default">
-			<result name="success">/2_action/index.jsp</result>
+			<result name="success">/02_action/index.jsp</result>
 		</action>
 		<!-- 普通action类，一个普通java类，拥有成员方法String execute()即可。Struts通过反射执行execute方法-->
 		<action name="normal" class="com.study.Struts2.action.NormalAction">
-			<result name="success">/2_action/index.jsp</result>
+			<result name="success">/02_action/index.jsp</result>
 		</action>
 		<!-- 一般Struts Action class 都是通过集成ActionSupport来实现 -->
 		<action name="basic" class="com.study.Struts2.action.BasicAction">
-			<result name="success">/2_action/default.jsp</result>
+			<result name="success">/02_action/default.jsp</result>
 		</action>
 	</package>
 	<!-- action end -->
@@ -69,24 +69,24 @@
 		<default-action-ref name="index"/>
 		<!-- method 方法调用 start -->
 		<action name="index" class="com.study.Struts2.action.method.MethodAction">
-			<result name="success">/3_method/index.jsp</result>
+			<result name="success">/03_method/index.jsp</result>
 		</action>
 		<action name="query" class="com.study.Struts2.action.method.MethodAction" method="query">
-			<result>/3_method/method_query.jsp</result>
+			<result>/03_method/method_query.jsp</result>
 		</action>
 		<action name="update" class="com.study.Struts2.action.method.MethodAction" method="update">
-			<result>/3_method/method_update.jsp</result>
+			<result>/03_method/method_update.jsp</result>
 		</action>
 		<action name="delete" class="com.study.Struts2.action.method.MethodAction" method="delete">
-			<result>/3_method/method_delete.jsp</result>
+			<result>/03_method/method_delete.jsp</result>
 		</action>
 		<action name="add" class="com.study.Struts2.action.method.MethodAction" method="add">
-			<result>/3_method/method_add.jsp</result>
+			<result>/03_method/method_add.jsp</result>
 		</action>
 		<!-- method 方法调用 end -->
 		<!-- 通配符调用 start -->
 		<action name="_*" class="com.study.Struts2.action.method.MethodAction" method="{1}">
-			<result>/3_method/method_{1}.jsp</result>
+			<result>/03_method/method_{1}.jsp</result>
 		</action>
 		<!-- 通配符调用 end -->
 		<!-- 动态方法调用 start-->
@@ -108,29 +108,29 @@
 		 -->
 		<action name="param" class="com.study.Struts2.action.ParamAction">
 			<result name="success">${type}</result>
-			<!-- /3_method/method_add.jsp only for test -->
-			<param name="type">/3_method/method_add.jsp</param>
+			<!-- /03_method/method_add.jsp only for test -->
+			<param name="type">/03_method/method_add.jsp</param>
 		</action>
 	</package>
 	<!-- action method end -->
 	<!-- action access servlet api start -->
 	<package name="servletapi" extends="struts-default" namespace="/servletapi">
 		<action name="index">
-			<result>/4_servletapi/index.jsp</result>
+			<result>/04_servletapi/index.jsp</result>
 		</action>
 		<!-- 通过ActionContext访问Servlet API -->
 		<action name="actioncontext" class="com.study.Struts2.action.servlet.ByActionContext">
-			<result>/4_servletapi/result.jsp</result>
+			<result>/04_servletapi/result.jsp</result>
 		</action>
 		<!-- 通过ServletActionContext访问Servlet API -->
 		<!-- 不推荐使用 -->
 		<action name="servletactioncontext" class="com.study.Struts2.action.servlet.ByServletActionContext">
-			<result>/4_servletapi/result.jsp</result>
+			<result>/04_servletapi/result.jsp</result>
 		</action>
 		<!-- 通过实现RequestAware，SessionAware，ApplicationAware接口，依赖Struts注入方式访问Servlet API -->
 		<!-- 最常用 -->
 		<action name="ioc" class="com.study.Struts2.action.servlet.ByIOC">
-			<result>/4_servletapi/result.jsp</result>
+			<result>/04_servletapi/result.jsp</result>
 		</action>
 	</package>
 	<!-- action access servlet api end -->
@@ -195,10 +195,10 @@
 					suppressEmptyParameters: 默认false，是否去除url中值为空的参数
 		 -->
 		 <!-- <global-results>
-			<result name="input">/5_result/index.jsp</result>
+			<result name="input">/05_result/index.jsp</result>
 		 </global-results> -->
 		 <action name="index">
-		 	<result>/5_result/index.jsp</result>
+		 	<result>/05_result/index.jsp</result>
 		 </action>
 		 <action name="dispatcher" class="com.study.Struts2.action.result.ResultAction" method="dispatcher">
 		 	<!-- use global result -->
@@ -211,7 +211,7 @@
 		 </action>
 		 <action name="redirect" class="com.study.Struts2.action.result.ResultAction" method="redirect">
 		 	<result type="redirect">
-		 		<param name="location">/5_result/index.jsp</param>
+		 		<param name="location">/05_result/index.jsp</param>
 		 		<!--  
 		 			redirect到action也是可以的
 		 			<param name="location">/servletapi/ioc</param>
@@ -258,7 +258,7 @@
 	<!-- tags start -->
 	<package name="tag" namespace="/tag" extends="struts-default">
 		<action name="index" class="com.study.Struts2.tag.TagsAction">
-			<result>/7_tag/index.jsp</result>
+			<result>/05_tag/index.jsp</result>
 		</action>
 	</package>
 	<!-- tags end -->
@@ -271,18 +271,18 @@
 		 -->
 		<default-action-ref name="index"></default-action-ref>
 		<global-results>
-			<result>/8_validation/result.jsp</result>
+			<result>/08_validation/result.jsp</result>
 		</global-results>
 		<action name="index">
-			<result>/8_validation/index.jsp</result>
+			<result>/08_validation/index.jsp</result>
 		</action>
 		<action name="goto-*">
-			<result>/8_validation/{1}.jsp</result>
+			<result>/08_validation/{1}.jsp</result>
 		</action>
 		<action name="base" class="com.study.Struts2.validation.BaseValidationAction">
 			<!-- 没有配置input result时，验证失败并没有跳转到error????? -->
-			<result name="error">/8_validation/error.jsp</result>
-			<result name="input">/8_validation/base.jsp</result>
+			<result name="error">/08_validation/error.jsp</result>
+			<result name="input">/08_validation/base.jsp</result>
 		</action>
 		<!-- 
 			Struts2通过xml或注解的方式实现可配置的数据校验，xml配置文件与action class所放目录一致，分为
@@ -295,7 +295,7 @@
 			如果只对user_add action进行输入校验，可以使用BaseValidationAction-user_add.validation.xml的方式来配置
 		 -->
 		<action name="user_*" class="com.study.Struts2.validation.BaseValidationAction">
-			<result name="input">/8_validation/allOrByAliasValidation.jsp</result>
+			<result name="input">/08_validation/allOrByAliasValidation.jsp</result>
 		</action>
 		<!-- 
 			validation.xml中又分为两种不同的验证方式，field验证和validator验证
@@ -303,7 +303,7 @@
 			validator验证：先指定规则，在指定field
 		 -->
 		 <action name="validator" class="com.study.Struts2.validation.ValidatorAction">
-		 	<result name="input">/8_validation/fieldAndValidatorVallidation.jsp</result>
+		 	<result name="input">/08_validation/fieldAndValidatorVallidation.jsp</result>
 		 </action>
 	</package>
 	<!-- validation end -->
@@ -324,10 +324,10 @@
 		 -->
 		<default-action-ref name="index" />
 		<action name="index">
-			<result>/9_i18n/index.jsp</result>
+			<result>/09_i18n/index.jsp</result>
 		</action>
 		<action name="goto-*">
-			<result>/9_i18n/{1}.jsp</result>
+			<result>/09_i18n/{1}.jsp</result>
 		</action>
 	</package>
 	<!-- i18n end -->
