@@ -32,6 +32,12 @@ public class StuAction extends ActionSupport {
 				System.out.print(stus.get(i));
 			}
 		}
+		
+		if(null != _stus){
+			for(int i=0; i<_stus.size(); i++){
+				System.out.print(_stus.get(i));
+			}
+		}
 		return SUCCESS;
 	}
 }
